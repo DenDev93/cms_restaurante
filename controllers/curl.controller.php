@@ -28,8 +28,6 @@ class CurlController{
 
 		$response = curl_exec($curl);
 
-		curl_close($curl);
-
 		if($response === false || $response === ''){
 
 			return (object) array(
@@ -82,7 +80,6 @@ class CurlController{
 
 		$response = curl_exec($curl);
 
-		curl_close($curl);
 		$response = json_decode($response);
 		return $response->choices[0]->message->content;
 

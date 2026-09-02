@@ -1,6 +1,15 @@
 
 <?php
 
+$idOrder = "";
+$transactionOrder = "";
+$dateOrder = "";
+$noteOrder = "";
+$processOrder = "";
+$titleTable = "";
+$idTable = "";
+$sales = array();
+
 if(isset($_GET["transactionOrder"])){
 
   $categories = getCategories();
@@ -82,7 +91,7 @@ if(isset($_GET["transactionOrder"])){
       "id_office_order" => $_SESSION["admin"]->id_office_admin,
       "status_order" => "Pendiente",
       "process_order" => "Ordenando",
-      "date_order" => date("Y-m-d H:m:i"),
+      "date_order" => date("Y-m-d H:i:s"),
       "date_created_order" => date("Y-m-d")
     );
 
@@ -109,9 +118,16 @@ if(isset($_GET["transactionOrder"])){
 
       $updateTable = CurlController::request($url,$method,$fields);
 
+    }else{
+
+      echo '<script>
+      alert("Su sesión ha expirado, vuelva a iniciar sesión");
+      window.location = "/login";
+      </script>';
+
     }
 
-  }else{
+  }else if($getOrder->status == 200){
 
     $idOrder = $getOrder->results[0]->id_order;
     $transactionOrder = $getOrder->results[0]->transaction_order;
@@ -163,12 +179,9 @@ function getCategories(){
 
     return $getCategories->results;
     
-
   }else{
 
-    echo '<script>
-    window.location = "/welcome";
-    </script>';
+    return array();
   
   }
 
@@ -185,6 +198,12 @@ function getProducts($categories){
   $fields = array();
 
   $getFoods = CurlController::request($url,$method,$fields);
+
+  foreach ($categories as $key => $value) {
+
+    $value->foods = array();
+
+  }
 
   if($getFoods->status == 200){
 
@@ -205,6 +224,10 @@ function getProducts($categories){
     }
 
     return $foods;
+
+  }else{
+
+    return array();
 
   }
 

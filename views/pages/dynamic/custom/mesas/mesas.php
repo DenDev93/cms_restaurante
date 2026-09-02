@@ -236,7 +236,7 @@ if($_SESSION["admin"]->id_office_admin > 0){
 			              		class="time-info" 
 			              		index="<?php echo $key ?>"
 			              		startTime="<?php echo $getOrder->results[0]->date_order ?>"
-			              		endTime="<?php echo date("Y-m-d H:m:i") ?>"></span>  
+			              		endTime="<?php echo date("Y-m-d H:i:s") ?>"></span>  
 
 			              	</div>
 

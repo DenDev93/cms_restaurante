@@ -4,7 +4,7 @@
                 
       <div class="row g-3">
 
-        <?php foreach ($value->foods as $index => $item): ?>
+        <?php foreach (($value->foods ?? array()) as $index => $item): ?>
 
           <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="menu-item" data-item="<?php echo urldecode($item->id_food) ?>" data-price="<?php echo $item->price_food ?>">

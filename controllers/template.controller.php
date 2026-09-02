@@ -348,6 +348,10 @@ class TemplateController{
 
 	static public function formatDate($type, $value){
 
+		if(empty($value)){
+			return "";
+		}
+
 		// Crear un objeto DateTime con la fecha
 		$fecha = new DateTime($value, new DateTimeZone('America/Bogota'));
 
