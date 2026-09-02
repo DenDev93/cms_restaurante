@@ -9,9 +9,9 @@ class InstallController{
 	static public function infoDatabase(){
 
 		$infoDB = array(
-			"database" => "restaurant",
-			"user" => "root",
-			"pass" => ""
+			"database" => getenv("DB_DATABASE") !== false ? getenv("DB_DATABASE") : "restaurant",
+			"user"     => getenv("DB_USER") !== false ? getenv("DB_USER") : "root",
+			"pass"     => getenv("DB_PASS") !== false ? getenv("DB_PASS") : ""
 		);
 
 		return $infoDB;
