@@ -12,6 +12,7 @@
   .table-card {
     border-radius: 12px;
     padding: 16px;
+    padding-bottom: 60px;
     min-height: 170px;
     position: relative;
     transition: all 0.3s ease;
