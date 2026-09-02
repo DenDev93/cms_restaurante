@@ -1,5 +1,7 @@
 <?php
 
+$tables = array();
+
 if($_SESSION["admin"]->id_office_admin > 0){
 
 	$url = "tables?linkTo=id_office_table&equalTo=".$_SESSION["admin"]->id_office_admin;
@@ -302,6 +304,10 @@ if($_SESSION["admin"]->id_office_admin > 0){
 
 <script src="/views/assets/js/mesas/mesas.js"></script>
 
-<?php else: include "views/pages/welcome/welcome.php" ?>
+<?php else: ?>
+
+	<div class="col-12 text-center py-4">
+		<p class="text-muted mb-0">No hay mesas registradas para esta sucursal.</p>
+	</div>
 
 <?php endif ?>
