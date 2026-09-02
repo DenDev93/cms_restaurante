@@ -128,3 +128,255 @@
       white-space: normal;
     }
   }
+
+  /*----------------------------------
+  Botón editar en tarjeta de mesa
+  ----------------------------------*/
+  .btn-edit-table {
+    background: rgba(255, 255, 255, 0.25);
+    color: inherit;
+    border: none;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+  }
+
+  .btn-edit-table:hover {
+    background: rgba(255, 255, 255, 0.9);
+    color: #212529;
+    transform: rotate(45deg);
+  }
+
+  /*----------------------------------
+  Modal edición de mesa
+  ----------------------------------*/
+  .edit-table-modal .modal-header {
+    background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+    color: #fff;
+  }
+
+  .edit-table-modal .modal-header .btn-close {
+    filter: invert(1);
+  }
+
+  .edit-table-modal .edit-badge-id {
+    font-size: 0.7rem;
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+
+  /*----------------------------------
+  Selector de estado (radio pills)
+  ----------------------------------*/
+  .edit-status-group {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .edit-status-btn {
+    border: 1px solid #dee2e6;
+    border-radius: 8px !important;
+    color: #495057;
+    font-size: 0.85rem;
+    flex: 1;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .edit-status-btn i {
+    font-size: 0.6rem;
+    vertical-align: middle;
+  }
+
+  .edit-status-libre:hover, .btn-check:checked + .edit-status-libre {
+    background: #28a745;
+    border-color: #28a745;
+    color: #fff;
+  }
+
+  .edit-status-ocupada:hover, .btn-check:checked + .edit-status-ocupada {
+    background: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+  }
+
+  .edit-status-pagando:hover, .btn-check:checked + .edit-status-pagando {
+    background: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+  }
+
+  .edit-status-reservada:hover, .btn-check:checked + .edit-status-reservada {
+    background: #6f42c1;
+    border-color: #6f42c1;
+    color: #fff;
+  }
+
+  /*----------------------------------
+  Icono: preview + quick pick
+  ----------------------------------*/
+  .icon-preview {
+    min-width: 44px;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .edit-icon-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .edit-icon-quick .icon-option {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    color: #495057;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .edit-icon-quick .icon-option:hover {
+    border-color: #28a745;
+    color: #28a745;
+    transform: translateY(-2px);
+  }
+
+  .edit-icon-quick .icon-option.active {
+    background: #28a745;
+    border-color: #28a745;
+    color: #fff;
+  }
+
+  /*----------------------------------
+  Tarjeta de capacidad (stepper)
+  ----------------------------------*/
+  .edit-capacity-card {
+    background: linear-gradient(135deg, #343a40 0%, #495057 100%);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+  }
+
+  .edit-capacity-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .edit-capacity-badge {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.2) !important;
+    transition: transform 0.15s ease;
+  }
+
+  .edit-capacity-badge.animate-pop {
+    transform: scale(1.12);
+  }
+
+  .btn-circle-capacity {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-minus {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-minus:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .btn-plus {
+    background: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+  }
+
+  .btn-plus:hover {
+    background: #20c997;
+    border-color: #20c997;
+    transform: scale(1.08);
+  }
+
+  .btn-circle-capacity:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .capacity-number {
+    min-width: 76px;
+  }
+
+  .capacity-number span {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+  }
+
+  .capacity-number small {
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
+
+  /*----------------------------------
+  Visual de personas (chips)
+  ----------------------------------*/
+  .edit-people-visual {
+    min-height: 34px;
+  }
+
+  .person-chip {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    animation: chipIn 0.25s ease backwards;
+  }
+
+  .person-chip-filled {
+    background: #20c997;
+    border-color: #20c997;
+    color: #fff;
+  }
+
+  @keyframes chipIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .edit-capacity-warning {
+    font-size: 0.8rem;
+  }
