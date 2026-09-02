@@ -195,7 +195,7 @@ if($getOffices !== null && $getOffices->status == 200){
 			              		data-people="<?php echo $value->people_table ?>"
 			              		data-status="<?php echo $value->status_table ?>"
 			              		data-office="<?php echo $value->id_office_table ?>">
-			              		<i class="fa-solid fa-gear"></i>
+			              		Editar
 			              	</button>
 			              <span class="table-status">
 			                  <?php if ($value->status_table == "libre"): ?>

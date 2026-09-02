@@ -136,9 +136,7 @@
     background: rgba(255, 255, 255, 0.25);
     color: inherit;
     border: none;
-    width: 32px;
-    height: 32px;
-    padding: 0;
+    padding: 4px 10px;
     position: relative;
     z-index: 10;
     display: inline-flex;
@@ -146,7 +144,9 @@
     justify-content: center;
     border-radius: 8px;
     transition: all 0.2s ease;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
@@ -155,16 +155,16 @@
     .btn-edit-table:hover {
       background: rgba(255, 255, 255, 0.9);
       color: #212529;
-      transform: rotate(45deg);
     }
   }
 
   @media (max-width: 575.98px) {
     .btn-edit-table {
-      width: 48px;
-      height: 48px;
-      font-size: 1.1rem;
-      /* Área táctil real de 48x48px - cumple指南 44px mínimo */
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      min-height: 44px;
+      min-width: 80px;
+      /* Área táctil 44px+ con padding generoso */
     }
   }
 
