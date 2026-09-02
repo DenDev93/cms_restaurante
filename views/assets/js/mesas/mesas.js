@@ -1,6 +1,59 @@
 $(function () {
 
 	/*=============================================
+	Agregar nueva mesa
+	=============================================*/
+
+	$(document).on("submit", "#formAddTable", function(e){
+
+		e.preventDefault();
+		e.stopPropagation();
+
+		if(this.checkValidity() === false){
+
+			this.classList.add("was-validated");
+			return;
+
+		}
+
+		var data = new FormData();
+		data.append("title_table",$("#title_table").val());
+		data.append("icon_table",$("#icon_table").val());
+		data.append("people_table",$("#people_table").val());
+		data.append("status_table",$("#status_table").val());
+		data.append("id_office_table",$("#id_office_table").val());
+		data.append("token", localStorage.getItem("tokenAdmin"));
+
+		$.ajax({
+
+			url:"/ajax/mesas.ajax.php",
+			method: "POST",
+			data: data,
+			contentType: false,
+			cache: false,
+			processData: false,
+			success: function(response){
+
+				if(response == 200){
+
+					fncSweetAlert("success", "Mesa agregada con éxito", setTimeout(()=>window.location="/mesas",1250));
+
+				}else if(response == 303){
+
+					fncSweetAlert("error", "El token ha expirado, inicia sesión nuevamente", setTimeout(()=>window.location="/logout",1000));
+
+				}else{
+
+					fncSweetAlert("error", "No se pudo agregar la mesa, intenta nuevamente", "");
+				}
+
+			}
+
+		})
+
+	});
+
+	/*=============================================
   	Actualizar el tiempo de los comensales en tiempo real
   	=============================================*/
   

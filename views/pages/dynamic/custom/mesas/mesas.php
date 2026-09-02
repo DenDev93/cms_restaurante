@@ -60,6 +60,25 @@ if($_SESSION["admin"]->id_office_admin > 0){
 
 }
 
+/*=============================================
+Traer Sucursales para el formulario de nueva mesa
+=============================================*/
+
+$url = "offices?select=id_office,title_office";
+$method = "GET";
+$fields = array();
+
+$getOffices = CurlController::request($url,$method,$fields);
+
+if($getOffices !== null && $getOffices->status == 200){
+
+	$offices = $getOffices->results;
+
+}else{
+
+	$offices = array();
+}
+
 ?>
 
 <?php if(!empty($tables)): ?>
@@ -73,6 +92,9 @@ if($_SESSION["admin"]->id_office_admin > 0){
 		<div class="card-header d-flex justify-content-between align-items-center">
 	      <h3 class="card-title">Gestión de Mesas</h3>
 	      <div class="d-flex align-items-center">
+	        <button class="btn btn-success btn-sm rounded px-3 py-2 me-2" data-bs-toggle="modal" data-bs-target="#modalAddTable">
+	          <i class="fa-solid fa-plus me-1"></i> Agregar Mesa
+	        </button>
 	        <i class="fa-solid fa-chair me-2"></i>
 	        <span class="badge bg-secondary"><?php echo $notFree ?>/<?php echo count($tables) ?> Mesas ocupadas</span>
 	      </div>
@@ -311,6 +333,72 @@ if($_SESSION["admin"]->id_office_admin > 0){
 </div>
 
 <script src="/views/assets/js/mesas/mesas.js"></script>
+
+<!--====================================
+Modal para agregar nueva mesa
+====================================-->
+
+<div class="modal fade" id="modalAddTable" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded">
+      <form method="POST" class="needs-validation" novalidate id="formAddTable">
+
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Agregar Nueva Mesa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <div class="form-group mb-3">
+            <label for="title_table" class="form-label">Nombre de la Mesa</label>
+            <input type="text" class="form-control rounded" id="title_table" name="title_table" placeholder="Ej: Mesa 8" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="icon_table" class="form-label">Icono (HTML)</label>
+            <textarea class="form-control rounded" id="icon_table" name="icon_table" rows="2" placeholder='Ej: <i class="fa-solid fa-chair"></i>'></textarea>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="people_table" class="form-label">Personas</label>
+            <input type="number" class="form-control rounded" id="people_table" name="people_table" value="4" min="1" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="status_table" class="form-label">Estado</label>
+            <select class="form-select rounded select2" id="status_table" name="status_table">
+              <option value="libre" selected>libre</option>
+              <option value="ocupada">ocupada</option>
+              <option value="pagando">pagando</option>
+              <option value="reservada">reservada</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="id_office_table" class="form-label">Sucursal</label>
+            <select class="form-select rounded select2" id="id_office_table" name="id_office_table" <?php if ($_SESSION["admin"]->id_office_admin > 0): ?> disabled <?php endif ?>>
+              <?php foreach ($offices as $office): ?>
+                <?php $selectedOffice = ($_SESSION["admin"]->id_office_admin > 0 && $office->id_office == $_SESSION["admin"]->id_office_admin) ? "selected" : ""; ?>
+                <option value="<?php echo $office->id_office ?>" <?php echo $selectedOffice ?>><?php echo urldecode($office->title_office) ?></option>
+              <?php endforeach ?>
+            </select>
+            <?php if ($_SESSION["admin"]->id_office_admin > 0): ?>
+              <input type="hidden" name="id_office_table" value="<?php echo $_SESSION["admin"]->id_office_admin ?>">
+            <?php endif ?>
+          </div>
+
+        </div>
+
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-dark rounded" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success rounded">Guardar Mesa</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
 
 <?php else: ?>
 
