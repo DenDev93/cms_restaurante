@@ -136,21 +136,45 @@
     background: rgba(255, 255, 255, 0.25);
     color: inherit;
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     padding: 0;
+    position: relative;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
     transition: all 0.2s ease;
     font-size: 0.85rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .btn-edit-table:hover {
-    background: rgba(255, 255, 255, 0.9);
-    color: #212529;
-    transform: rotate(45deg);
+  /* Área táctil ampliada sin cambiar el tamaño visual del botón,
+     para que en móvil el toque sea fiable (>= 40px). */
+  .btn-edit-table::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 10px;
+    z-index: 3;
+  }
+
+  @media (hover: hover) {
+    .btn-edit-table:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #212529;
+      transform: rotate(45deg);
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .btn-edit-table {
+      width: 38px;
+      height: 38px;
+      font-size: 0.95rem;
+    }
   }
 
   /*----------------------------------
@@ -379,4 +403,28 @@
 
   .edit-capacity-warning {
     font-size: 0.8rem;
+  }
+
+  /*----------------------------------
+  Modal de edición: que quepa en pantallas pequeñas.
+  Cabecera y pie fijos; el cuerpo hace scroll vertical.
+  ----------------------------------*/
+  @media (max-width: 575.98px), (max-height: 900px) {
+    #modalEditTable .modal-dialog {
+      max-height: calc(100vh - 20px);
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #modalEditTable .modal-content {
+      max-height: calc(100vh - 20px);
+      overflow: hidden;
+    }
+
+    #modalEditTable .modal-body {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      /* deja espacio para header (~62px) y footer (~116px) */
+      max-height: calc(100vh - 20px - 11.5rem);
+    }
   }

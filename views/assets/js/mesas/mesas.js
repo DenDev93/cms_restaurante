@@ -35,9 +35,7 @@ $(function () {
 	Abrir modal para editar mesa
 	=============================================*/
 
-	$(document).on("click", ".edit-table-btn", function () {
-
-		let btn = $(this);
+	function openEditModal(btn) {
 
 		$("#edit_id_table").val(btn.data("id"));
 		$("#edit_title_table").val(btn.data("title"));
@@ -59,6 +57,21 @@ $(function () {
 		$("#edit_icon_preview").html(parseIconToPreview(btn.data("icon")));
 
 		$("#modalEditTable").modal("show");
+	}
+
+	$(document).on("click", ".edit-table-btn", function (e) {
+
+		openEditModal($(this));
+	});
+
+	/* En dispositivos táctiles algunos navegadores pueden no disparar
+	el 'click' sintético (hover/transiciones), así que abrimos el modal
+	directamente desde 'touchend' y evitamos el doble disparo. */
+	$(document).on("touchend", ".edit-table-btn", function (e) {
+
+		let orig = e.originalEvent;
+		if (orig && orig.cancelable) orig.preventDefault();
+		openEditModal($(this));
 	});
 
 	/*=============================================
