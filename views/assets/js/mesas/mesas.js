@@ -64,16 +64,6 @@ $(function () {
 		openEditModal($(this));
 	});
 
-	/* Handler táctil robusto: touchstart dispara antes que click sintético.
-	   Usamos flag para evitar doble apertura. */
-	$(document).on("touchstart", ".edit-table-btn", function (e) {
-
-		if ($(this).data("touchHandled")) return;
-		$(this).data("touchHandled", true);
-		setTimeout(() => $(this).data("touchHandled", false), 400);
-		openEditModal($(this));
-	});
-
 	/*=============================================
 	Stepper de capacidad
 	=============================================*/

@@ -168,6 +168,20 @@
     }
   }
 
+  /* En móvil, el contenedor flex del header no debe interceptar toques;
+     solo el botón Editar debe recibirlos */
+  @media (max-width: 575.98px) {
+    .table-header > .d-flex {
+      pointer-events: none;
+    }
+    .table-header > .d-flex .btn-edit-table {
+      pointer-events: auto;
+    }
+    .table-header .table-status {
+      pointer-events: none;
+    }
+  }
+
   /*----------------------------------
   Modal edición de mesa
   ----------------------------------*/
