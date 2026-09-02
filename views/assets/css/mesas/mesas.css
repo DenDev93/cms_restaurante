@@ -140,7 +140,7 @@
     height: 32px;
     padding: 0;
     position: relative;
-    z-index: 2;
+    z-index: 10;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -149,16 +149,6 @@
     font-size: 0.85rem;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  /* Área táctil ampliada sin cambiar el tamaño visual del botón,
-     para que en móvil el toque sea fiable (>= 40px). */
-  .btn-edit-table::after {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    border-radius: 10px;
-    z-index: 3;
   }
 
   @media (hover: hover) {
@@ -171,9 +161,10 @@
 
   @media (max-width: 575.98px) {
     .btn-edit-table {
-      width: 38px;
-      height: 38px;
-      font-size: 0.95rem;
+      width: 48px;
+      height: 48px;
+      font-size: 1.1rem;
+      /* Área táctil real de 48x48px - cumple指南 44px mínimo */
     }
   }
 

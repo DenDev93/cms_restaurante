@@ -64,13 +64,13 @@ $(function () {
 		openEditModal($(this));
 	});
 
-	/* En dispositivos táctiles algunos navegadores pueden no disparar
-	el 'click' sintético (hover/transiciones), así que abrimos el modal
-	directamente desde 'touchend' y evitamos el doble disparo. */
-	$(document).on("touchend", ".edit-table-btn", function (e) {
+	/* Handler táctil robusto: touchstart dispara antes que click sintético.
+	   Usamos flag para evitar doble apertura. */
+	$(document).on("touchstart", ".edit-table-btn", function (e) {
 
-		let orig = e.originalEvent;
-		if (orig && orig.cancelable) orig.preventDefault();
+		if ($(this).data("touchHandled")) return;
+		$(this).data("touchHandled", true);
+		setTimeout(() => $(this).data("touchHandled", false), 400);
 		openEditModal($(this));
 	});
 
