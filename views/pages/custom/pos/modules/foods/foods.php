@@ -9,7 +9,7 @@
           <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="menu-item" data-item="<?php echo urldecode($item->id_food) ?>" data-price="<?php echo $item->price_food ?>">
                   <div class="menu-item-image">
-                      <img src="<?php echo urldecode($item->img_food) ?>" alt="<?php echo urldecode($item->title_food) ?>" onerror="this.src='https://placehold.co/100x100'" style="width: 100%;aspect-ratio: 1 / 1; object-fit: cover; object-position: center; display: block; ">
+                      <img src="<?php echo urldecode($item->img_food) ?>" alt="<?php echo urldecode($item->title_food) ?>" onerror="this.src='https://placehold.co/100x100'" loading="lazy" decoding="async" style="width: 100%;aspect-ratio: 1 / 1; object-fit: cover; object-position: center; display: block; ">
                   </div>
                   <div class="menu-item-info">
                       <h6 class="menu-item-name"><?php echo urldecode($item->title_food) ?></h6>

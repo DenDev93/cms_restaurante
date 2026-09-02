@@ -151,9 +151,7 @@ $tip = 0.1;
 
 	<!-- https://www.w3schools.com/bootstrap5/ -->
 	<link rel="stylesheet" href="/views/assets/plugins/bootstrap5/bootstrap.min.css" >
-	<!-- https://fontawesome.com/v5/search -->
-	<link rel="stylesheet" href="/views/assets/plugins/fontawesome-free/css/all.min.css">
-	<!-- https://fontawesome.com/v7/search -->
+	<!-- https://fontawesome.com/v7/search (se usa el CDN v7: el local v5 no incluye fa-kitchen-set) -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 	<!-- https://icons.getbootstrap.com/ -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css">
@@ -178,39 +176,39 @@ $tip = 0.1;
     <link rel="stylesheet" href="/views/assets/plugins/codemirror/codemirror.css">
 	<link rel="stylesheet" href="/views/assets/plugins/codemirror/monokai.css">
 
-	<!--=============================================
+<!--=============================================
 	PLUGINS JS
 	===============================================-->
 
 	<!-- https://jquery.com/ -->
 	<script src="/views/assets/plugins/jquery/jquery.min.js"></script>
-	<!-- https://jqueryui.com/ -->
+	<!-- https://jqueryui.com/ (sortable del sidebar/páginas) -->
 	<script src="/views/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
 	<!-- https://www.w3schools.com/bootstrap5/ -->
 	<script src="/views/assets/plugins/bootstrap5/bootstrap.bundle.min.js"></script>
 	<!-- https://sweetalert2.github.io/ -->
-	<script src="/views/assets/plugins/sweetalert/sweetalert.min.js"></script> 
+	<script src="/views/assets/plugins/sweetalert/sweetalert.min.js"></script>
 	<!-- https://www.jqueryscript.net/demo/Google-Inbox-Style-Linear-Preloader-Plugin-with-jQuery-CSS3/ -->
-	<script src="/views/assets/plugins/material-preloader/material-preloader.js"></script> 
+	<script src="/views/assets/plugins/material-preloader/material-preloader.js"></script>
 	<!-- https://codeseven.github.io/toastr/demo.html -->
 	<script src="/views/assets/plugins/toastr/toastr.min.js"></script>
 	<!-- http://josecebe.github.io/twbs-pagination/ -->
-	<script src="/views/assets/plugins/twbs-pagination/twbs-pagination.min.js"></script> 
+	<script src="/views/assets/plugins/twbs-pagination/twbs-pagination.min.js"></script>
 	<!-- https://momentjs.com/ -->
 	<script src="/views/assets/plugins/moment/moment.min.js"></script>
 	<script src="/views/assets/plugins/moment/moment-with-locales.min.js"></script>
 	<!--  https://www.daterangepicker.com/ -->
-	<script src="/views/assets/plugins/daterangepicker/daterangepicker.js"></script>	
+	<script src="/views/assets/plugins/daterangepicker/daterangepicker.js"></script>
 	<!-- https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/examples/ -->
-	<script src="/views/assets/plugins/tags-input/tags-input.js"></script> 
+	<script src="/views/assets/plugins/tags-input/tags-input.js"></script>
 	<!-- https://select2.org/ -->
 	<script src="/views/assets/plugins/select2/select2.full.min.js"></script>
 	<!-- https://xdsoft.net/jqplugins/datetimepicker/ -->
 	<script src="/views/assets/plugins/datetimepicker/datetimepicker.full.min.js"></script>
-	<!-- https://summernote.org -->	
+	<!-- https://summernote.org -->
 	<script src="/views/assets/plugins/summernote/summernote.min.js"></script>
 	<script src="/views/assets/plugins/summernote/summernote-bs4.js"></script>
-    <script src="/views/assets/plugins/summernote/summernote-code-beautify-plugin.js"></script>
+	<script src="/views/assets/plugins/summernote/summernote-code-beautify-plugin.js"></script>
 	<script src="/views/assets/plugins/summernote/emoji.config.js"></script>
 	<script src="/views/assets/plugins/summernote/tam-emoji.min.js"></script>
 	<!-- https://codemirror.net/ -->
