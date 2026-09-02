@@ -242,6 +242,28 @@
   }
 
   /*----------------------------------
+  Móvil: área táctil en píldoras de estado
+  ----------------------------------*/
+  @media (max-width: 575.98px) {
+    .edit-status-btn {
+      min-height: 44px;
+      padding: 10px 8px;
+      font-size: 0.85rem;
+    }
+    .edit-status-btn i {
+      font-size: 0.7rem;
+    }
+    .btn-check {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      cursor: pointer;
+    }
+  }
+
+  /*----------------------------------
   Icono: preview + quick pick
   ----------------------------------*/
   .icon-preview {
