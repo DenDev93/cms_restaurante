@@ -232,30 +232,6 @@ $tip = 0.1;
 <!-- <body class="dark-mode"> -->
 <body>
 
-	<!--=============================================
-	Guard contra restauración con "Atrás" (bfcache / bfcache)
-	Si el navegador restaura la página desde la memoria de caché
-	sin volver a preguntar al servidor, se fuerza una recarga real.
-	===============================================-->
-	<script>
-	(function () {
-		// Si la página llega restaurada desde bfcache (botón atrás / swipe en móvil)
-		// sin haber pasado por el servidor, forzar una recarga real para validar la sesión.
-		if (sessionStorage.getItem('bfcache_forced') === '1') {
-			// Ya recargamos antes en esta pestaña; no entrar en bucle
-			sessionStorage.removeItem('bfcache_forced');
-		}
-		window.addEventListener('pageshow', function (e) {
-			if (e.persisted) {
-				if (sessionStorage.getItem('bfcache_forced') !== 'done') {
-					sessionStorage.setItem('bfcache_forced', 'done');
-					window.location.reload();
-				}
-			}
-		});
-	})();
-	</script>
-
 	<?php 
 
 	if(!isset($_SESSION["admin"])){
@@ -279,6 +255,51 @@ $tip = 0.1;
 
 	<?php if (isset($_SESSION["admin"])): ?>
 	
+
+		<!--=============================================
+		Guard de sesión: protege las URLs ante el botón "atrás"
+		o el gesto de volver en móvil (bfcache / cambio de pestaña).
+		Al volver a estar visible, revalida la sesión contra el
+		servidor; si cerró sesión, redirige al login.
+		===============================================-->
+		<script>
+		(function () {
+			var sessionChecked = false;
+
+			function validateSession() {
+				fetch('/session-check.php', { credentials: 'include', cache: 'no-store' })
+					.then(function (r) {
+						if (r.status === 401) {
+							window.location.href = '/';
+							return;
+						}
+						return r.json();
+					})
+					.then(function (data) {
+						if (data && data.redirect) {
+							window.location.href = data.redirect;
+						}
+					})
+					.catch(function () { /* sin conexión: no hacer nada */ });
+			}
+
+			// Al restaurar la página desde bfcache (atrás / swipe en móvil)
+			window.addEventListener('pageshow', function (e) {
+				if (e.persisted) {
+					validateSession();
+				}
+			});
+
+			// Al volver a primer plano (sale de bfcache o cambio de pestaña en móvil)
+			document.addEventListener('visibilitychange', function () {
+				if (document.visibilityState === 'visible' && !sessionChecked) {
+					sessionChecked = true;
+					validateSession();
+					setTimeout(function () { sessionChecked = false; }, 600);
+				}
+			});
+		})();
+		</script>
 
 		<input type="hidden" id="idAdmin" value="<?php echo base64_encode($_SESSION["admin"]->id_admin) ?>">
 		<input type="hidden" id="idOffice" value="<?php echo base64_encode($_SESSION["admin"]->id_office_admin) ?>">
