@@ -236,6 +236,29 @@ $tip = 0.1;
 
 	if(!isset($_SESSION["admin"])){
 
+		/*=============================================
+		Sin sesión: si se llegó a una ruta interna (p. ej. /inicio?office=..),
+		se redirige a la raíz con la sesión limpia. Así la URL visible es
+		siempre la raíz hasta iniciar sesión, y no quedan rutas internas
+		en el historial para que el botón "atrás" no devuelva a ellas.
+		=============================================*/
+		if (!empty($routesArray[0])) {
+
+			$_SESSION = array();
+			if (ini_get("session.use_cookies")) {
+				$p = session_get_cookie_params();
+				setcookie(session_name(), '', time() - 42000, $p["path"], $p["domain"], $p["secure"], $p["httponly"]);
+			}
+			if (session_status() == PHP_SESSION_ACTIVE) {
+				session_destroy();
+			}
+
+			header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+			header("Pragma: no-cache");
+			header("Location: /");
+			exit;
+		}
+
 		if($admin == null){
 
 			include "pages/install/install.php";

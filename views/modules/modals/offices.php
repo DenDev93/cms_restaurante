@@ -25,7 +25,7 @@ if($getOffices->status == 200){
     <div class="modal-content rounded">
 
 
-    	<form method="GET">
+    	<form method="GET" id="formOffice">
 	    	<!-- Modal Header -->
 	    	<div class="modal-header">
 	    		<h4 class="modal-title">Elegir Sucursal</h4>
@@ -69,3 +69,33 @@ if($getOffices->status == 200){
     </div>
   </div>
 </div>
+
+<!--=============================================
+Cambiar de sucursal sin ensuciar la URL
+(no deja ?office=... en el historial)
+===============================================-->
+<script>
+(function () {
+	var form = document.getElementById('formOffice');
+	if (!form) return;
+
+	form.addEventListener('submit', function (e) {
+		var sel = form.querySelector('select[name="office"]');
+		if (!sel || !sel.value) return;
+
+		e.preventDefault();
+		var value = encodeURIComponent(sel.value);
+
+		// Guardar la oficina en sesión (GET a la URL actual sin navegar)
+		fetch('?' + new URLSearchParams({ office: sel.value }).toString(), { credentials: 'include' })
+			.then(function () {
+				// Limpiar cualquier query/hash previo de la URL (sin añadir al historial)
+				var clean = window.location.origin + window.location.pathname;
+				window.location.replace(clean);
+			})
+			.catch(function () {
+				window.location.replace(window.location.origin + window.location.pathname);
+			});
+	});
+})();
+</script>
