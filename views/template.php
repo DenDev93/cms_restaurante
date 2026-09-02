@@ -232,6 +232,30 @@ $tip = 0.1;
 <!-- <body class="dark-mode"> -->
 <body>
 
+	<!--=============================================
+	Guard contra restauración con "Atrás" (bfcache / bfcache)
+	Si el navegador restaura la página desde la memoria de caché
+	sin volver a preguntar al servidor, se fuerza una recarga real.
+	===============================================-->
+	<script>
+	(function () {
+		// Si la página llega restaurada desde bfcache (botón atrás / swipe en móvil)
+		// sin haber pasado por el servidor, forzar una recarga real para validar la sesión.
+		if (sessionStorage.getItem('bfcache_forced') === '1') {
+			// Ya recargamos antes en esta pestaña; no entrar en bucle
+			sessionStorage.removeItem('bfcache_forced');
+		}
+		window.addEventListener('pageshow', function (e) {
+			if (e.persisted) {
+				if (sessionStorage.getItem('bfcache_forced') !== 'done') {
+					sessionStorage.setItem('bfcache_forced', 'done');
+					window.location.reload();
+				}
+			}
+		});
+	})();
+	</script>
+
 	<?php 
 
 	if(!isset($_SESSION["admin"])){
