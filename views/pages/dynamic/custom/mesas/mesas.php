@@ -89,9 +89,9 @@ if($getOffices !== null && $getOffices->status == 200){
 	
 	<div class="card rounded">
 		
-		<div class="card-header d-flex justify-content-between align-items-center">
+		<div class="card-header d-flex mesas-header justify-content-between align-items-center">
 	      <h3 class="card-title">Gestión de Mesas</h3>
-	      <div class="d-flex align-items-center">
+	      <div class="d-flex mesas-header-actions align-items-center">
 	        <button class="btn btn-success btn-sm rounded px-3 py-2 me-2" data-bs-toggle="modal" data-bs-target="#modalAddTable">
 	          <i class="fa-solid fa-plus me-1"></i> Agregar Mesa
 	        </button>

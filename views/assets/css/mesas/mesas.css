@@ -114,3 +114,17 @@
       min-height: 120px;
     }
   }
+
+  @media (max-width: 576px) {
+    .mesas-header {
+      flex-direction: column;
+      align-items: flex-start !important;
+      gap: 0.5rem;
+    }
+    .mesas-header-actions {
+      flex-wrap: wrap;
+    }
+    .mesas-header-actions .badge {
+      white-space: normal;
+    }
+  }
