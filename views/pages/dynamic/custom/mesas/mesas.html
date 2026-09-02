@@ -1,0 +1,425 @@
+<!--==============================
+Custom
+ ================================-->
+
+ <style>
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .bg-purple {
+    background-color: #6f42c1 !important;
+  }
+
+  .table-card {
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 170px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .table-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .table-free {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: 5px solid #28a745;
+  }
+
+  .table-occupied {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: #212529;
+    border: 5px solid #ffc107;
+  }
+
+  .table-waiting {
+    background: linear-gradient(135deg, #17a2b8 0%, #007bff 100%);
+    color: white;
+    border: 5px solid #17a2b8;
+  }
+
+  .table-reserved {
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+    color: white;
+    border: 5px solid #6f42c1;
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .table-number {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .table-status {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .table-info {
+    margin-bottom: 12px;
+  }
+
+  .seats-info {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+
+  .party-info,
+  .time-info {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .table-actions {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .seat-guests-btn,
+  .process-payment-btn {
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .seat-guests-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    transform: scale(1.02);
+  }
+
+  .process-payment-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .table-card {
+      min-height: 120px;
+    }
+  }
+</style>
+
+<div class="col-12 mb-3 position-relative">
+
+  <!--==============================
+   Start Custom
+  ================================-->
+
+  <div class="card rounded">
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3 class="card-title">Gestión de Mesas</h3>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-table me-2"></i>
+        <span class="badge bg-secondary">12/25 Tables Occupied</span>
+      </div>
+    </div>
+
+    <div class="card-body">
+
+      <!-- Legend -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <div class="d-flex align-items-center">
+              <div class="legend-dot bg-success me-2"></div>
+              <span class="small">Free</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="legend-dot bg-warning me-2"></div>
+              <span class="small">Occupied</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="legend-dot bg-info me-2"></div>
+              <span class="small">Waiting for Bill</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="legend-dot bg-purple me-2"></div>
+              <span class="small">Reserved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tables Grid -->
+      <div class="row g-3">
+
+        <!-- Table 1 - Free -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-free">
+            <div class="table-header">
+              <h5 class="table-number">Table 1</h5>
+              <span class="table-status">Free</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 4</p>
+            </div>
+            <div class="table-actions">
+              <button class="btn btn-light btn-sm w-100 seat-guests-btn" data-table="1">
+                Seat Guests
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 2 - Occupied -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-occupied">
+            <div class="table-header">
+              <h5 class="table-number">Table 2</h5>
+              <span class="table-status">Occupied</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 2 | Order #124</p>
+              <div class="d-flex justify-content-between">
+                <span class="party-info">Party of 2</span>
+                <span class="time-info">1h 15m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 3 - Occupied -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-occupied">
+            <div class="table-header">
+              <h5 class="table-number">Table 3</h5>
+              <span class="table-status">Occupied</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 6 | Order #125</p>
+              <div class="d-flex justify-content-between">
+                <span class="party-info">Party of 5</span>
+                <span class="time-info">45m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 4 - Waiting for Bill -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-waiting">
+            <div class="table-header">
+              <h5 class="table-number">Table 4</h5>
+              <span class="table-status">Waiting Bill</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 4 | Order #121</p>
+              <div class="d-flex justify-content-between">
+                <span class="party-info">Party of 4</span>
+              </div>
+            </div>
+            <div class="table-actions">
+              <button class="btn btn-info btn-sm w-100 process-payment-btn" data-table="4">
+                Process Payment
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 5 - Free -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-free">
+            <div class="table-header">
+              <h5 class="table-number">Table 5</h5>
+              <span class="table-status">Free</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 8</p>
+            </div>
+            <div class="table-actions">
+              <button class="btn btn-light btn-sm w-100 seat-guests-btn" data-table="5">
+                Seat Guests
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 6 - Reserved -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-reserved">
+            <div class="table-header">
+              <h5 class="table-number">Table 6</h5>
+              <span class="table-status">Reserved</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 4</p>
+              <div class="d-flex justify-content-between">
+                <span class="party-info">John Doe</span>
+                <span class="time-info">7:30 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 7 - Occupied -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-occupied">
+            <div class="table-header">
+              <h5 class="table-number">Table 7</h5>
+              <span class="table-status">Occupied</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 2 | Order #128</p>
+              <div class="d-flex justify-content-between">
+                <span class="party-info">Party of 2</span>
+                <span class="time-info">22m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Table 8 - Free -->
+        <div class="col-lg-4 col-md-6">
+          <div class="table-card table-free">
+            <div class="table-header">
+              <h5 class="table-number">Table 8</h5>
+              <span class="table-status">Free</span>
+            </div>
+            <div class="table-info">
+              <p class="seats-info">Seats: 4</p>
+            </div>
+            <div class="table-actions">
+              <button class="btn btn-light btn-sm w-100 seat-guests-btn" data-table="8">
+                Seat Guests
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- JavaScript for Table Management -->
+  <script>
+    $(function() {
+      // ---- Delegación: Seat Guests ----
+      $(document).on('click', '.seat-guests-btn', function () {
+        const $btn = $(this);
+        const tableNumber = $btn.data('table');
+        const partySize = prompt(`¿Cuántas personas para la Mesa ${tableNumber}?`);
+
+        if (partySize && partySize > 0) {
+          seatGuests(tableNumber, partySize, $btn);
+        }
+      });
+
+      // ---- Delegación: Process Payment ----
+      $(document).on('click', '.process-payment-btn', function() {
+        const $btn = $(this);
+        const tableNumber = $btn.data('table');
+
+        if (confirm(`¿Procesar pago para la Mesa ${tableNumber}?`)) {
+          const $tableCard = $btn.closest('.table-card');
+          const $tableHeader = $tableCard.find('.table-header');
+          const $tableInfo = $tableCard.find('.table-info');
+          const $tableActions = $tableCard.find('.table-actions');
+
+          // Cambiar estado a libre
+          $tableCard.attr('class', 'table-card table-free');
+          $tableHeader.find('.table-status').text('Free');
+
+          // Restaurar info de asientos (tomar solo la parte antes del '|')
+          const seatsInfoText = $tableInfo.find('.seats-info').text(); // p.ej: "Seats: 4 | Order #123"
+          const seatsPart = seatsInfoText.split('|')[0].trim(); // "Seats: 4"
+          $tableInfo.html(`<p class="seats-info">${seatsPart}</p>`);
+
+          // Volver a poner el botón Seat Guests
+          $tableActions.html(
+            `<button class="btn btn-light btn-sm w-100 seat-guests-btn" data-table="${tableNumber}">Seat Guests</button>`
+          );
+
+          updateOccupiedCount();
+          showNotification(`Pago procesado para Mesa ${tableNumber}`, 'success');
+        }
+      });
+
+      // ---- Contador ocupadas ----
+      function updateOccupiedCount() {
+        const occupiedTables = $('.table-occupied, .table-waiting').length;
+        const totalTables = $('.table-card').length;
+        $('.badge').text(`${occupiedTables}/${totalTables} Tables Occupied`);
+      }
+
+      // ---- Notificaciones Bootstrap ----
+      function showNotification(message, type = 'info') {
+        const cls = (type === 'success') ? 'success' : 'info';
+        const $notification = $(`<div class="alert alert-${cls} alert-dismissible fade show position-fixed" style="top:20px; right:20px; z-index:9999; min-width:300px;">
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>`);
+
+        $('body').append($notification);
+
+        setTimeout(() => {
+          $notification.remove();
+        }, 3000);
+      }
+
+      // ---- Función reutilizable para sentar clientes ----
+      function seatGuests(tableNumber, partySize, $button) {
+        const $tableCard = $button.closest('.table-card');
+        const $tableHeader = $tableCard.find('.table-header');
+        const $tableInfo = $tableCard.find('.table-info');
+        const $tableActions = $tableCard.find('.table-actions');
+
+        // Cambiar a ocupado
+        $tableCard.attr('class', 'table-card table-occupied');
+        $tableHeader.find('.table-status').text('Occupied');
+
+        // Actualizar info
+        const currentSeats = $tableInfo.find('.seats-info').text().split(':')[1].trim().split('|')[0].trim();
+        const orderNumber = Math.floor(Math.random() * 900) + 100;
+
+        $tableInfo.html(`
+        <p class="seats-info">Seats: ${currentSeats} | Order #${orderNumber}</p>
+        <div class="d-flex justify-content-between">
+        <span class="party-info">Party of ${partySize}</span>
+        <span class="time-info">0m</span>
+        </div>
+        `);
+
+        // Quitar botón
+        $tableActions.empty();
+
+        updateOccupiedCount();
+        showNotification(`Mesa ${tableNumber} ocupada con ${partySize} personas`, 'success');
+      }
+
+      // ---- Efecto click en la card (evitar cuando se hace click en un botón) ----
+      $(document).on('click', '.table-card', function(e) {
+        if ($(e.target).is('button') || $(e.target).closest('button').length) return;
+
+        const $card = $(this);
+        $card.css('transform', 'scale(0.98)');
+        setTimeout(() => $card.css('transform', ''), 150);
+      });
+    });
+  </script>
+
+
+</div>

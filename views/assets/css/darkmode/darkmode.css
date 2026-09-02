@@ -1,0 +1,415 @@
+.dark-mode {
+    background-color: #090E18!important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .backgroundImage{
+    background-color: #000!important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode #wrapper {
+    background-color: #090E18 !important;
+}
+
+/* Navbar */
+.dark-mode .navbar {
+    background-color: #090E18 !important;
+    border-color: #333 !important;
+}
+
+/* Text and backgrounds */
+.dark-mode .text-dark,
+.dark-mode .btn-outline-dark {
+    color: #ffffff !important;
+}
+.dark-mode .bg-white {
+    background-color: #090E18 !important;
+}
+.dark-mode .bg-light {
+    background-color: #2d2d2d !important;
+}
+
+/* Cards */
+.dark-mode .card {
+    background-color: #090E18;
+    border-color: #333;
+}
+
+/* Forms */
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+/* Tables */
+.dark-mode .table {
+    color: #e0e0e0;
+}
+.dark-mode .table th,
+.dark-mode .table td {
+    border-color: #444;
+}
+
+/* Checkout Modal Dark Mode */
+.dark-mode #myCheckout .modal-content {
+    background: linear-gradient(135deg, #090E18 0%, #1a1a1a 100%);
+    border: none;
+    color: #e0e0e0;
+}
+
+.dark-mode #myCheckout .modal-header {
+    border-bottom: 1px solid #333;
+    background: rgba(9, 14, 24, 0.9);
+}
+
+.dark-mode #myCheckout .modal-header .modal-title {
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.dark-mode #myCheckout .btn-close {
+    filter: invert(1);
+}
+
+.dark-mode .checkout-modal-body {
+    padding: 2rem;
+}
+
+.dark-mode .payment-title {
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.dark-mode .payment-option {
+    background: rgba(45, 45, 45, 0.6);
+    border: 2px solid #444;
+    border-radius: 12px;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .payment-option:hover {
+    background: rgba(45, 45, 45, 0.8);
+    border-color: #68d391;
+    transform: translateY(-2px);
+}
+
+.dark-mode .payment-option.active {
+    background: rgba(104, 211, 145, 0.2);
+    border-color: #68d391;
+    color: #68d391;
+}
+
+.dark-mode .amount-input {
+    background: rgba(45, 45, 45, 0.6);
+    border: 2px solid #444;
+    border-radius: 12px;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem 1rem 1rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .amount-input:focus {
+    background: rgba(45, 45, 45, 0.8);
+    border-color: #68d391;
+    color: #e0e0e0;
+    box-shadow: 0 0 0 0.2rem rgba(104, 211, 145, 0.25);
+}
+
+.dark-mode .amount-input::placeholder {
+    color: #a0aec0;
+}
+
+.dark-mode .currency-symbol {
+    color: #a0aec0;
+}
+
+.dark-mode .process-payment-btn {
+    background: linear-gradient(135deg, #68d391 0%, #48bb78 100%);
+    border: none;
+    border-radius: 12px;
+    color: #090E18;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dark-mode .process-payment-btn:hover {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(104, 211, 145, 0.3);
+}
+
+.dark-mode #myCheckout .modal-footer {
+    border-top: 1px solid #333;
+    background: rgba(9, 14, 24, 0.9);
+}
+
+.dark-mode #myCheckout .modal-footer .btn-dark {
+    background: rgba(9, 14, 24, 0.8);
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+.dark-mode #myCheckout .modal-footer .btn-dark:hover {
+    background: rgba(9, 14, 24, 1);
+    border-color: #68d391;
+}
+
+/* Reservations System Dark Mode */
+.dark-mode .reservation-card {
+    background-color: #090E18 !important;
+    border-color: #333 !important;
+}
+
+.dark-mode .reservation-header {
+    background-color: rgba(9, 14, 24, 0.9) !important;
+    border-bottom: 1px solid #333 !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .reservation-subtitle {
+    color: #e0e0e0 !important;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem !important;
+}
+
+.dark-mode .reservation-input {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .reservation-input:focus {
+    background-color: #2d2d2d !important;
+    border-color: #68d391 !important;
+    color: #e0e0e0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(104, 211, 145, 0.25) !important;
+}
+
+.dark-mode .reservation-input::placeholder {
+    color: #a0aec0 !important;
+}
+
+.dark-mode .reservation-btn-primary {
+    background: linear-gradient(135deg, #68d391 0%, #48bb78 100%) !important;
+    border: none !important;
+    color: #090E18 !important;
+}
+
+.dark-mode .reservation-btn-primary:hover {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(104, 211, 145, 0.3);
+}
+
+.dark-mode .reservation-btn-secondary {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .reservation-btn-secondary:hover {
+    background-color: #3d3d3d !important;
+    border-color: #555 !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .reservation-calendar {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    border-radius: 8px !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .calendar-day {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444 !important;
+    color: #e0e0e0 !important;
+}
+
+.dark-mode .calendar-day:hover {
+    background-color: #3d3d3d !important;
+    border-color: #68d391 !important;
+}
+
+.dark-mode .calendar-day.selected {
+    background-color: #68d391 !important;
+    color: #090E18 !important;
+    border-color: #68d391 !important;
+}
+
+.dark-mode .calendar-day.today {
+    background-color: rgba(104, 211, 145, 0.2) !important;
+    border-color: #68d391 !important;
+    color: #68d391 !important;
+}
+
+.dark-mode .today-reservations {
+    background-color: #2d2d2d !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+}
+
+.dark-mode .reservation-item {
+    background-color: #3d3d3d !important;
+    border: 1px solid #444 !important;
+    border-radius: 6px !important;
+    color: #e0e0e0 !important;
+    margin-bottom: 0.5rem !important;
+    padding: 0.75rem !important;
+}
+
+.dark-mode .table-status-item {
+    background-color: #3d3d3d !important;
+    border: 1px solid #444 !important;
+    border-radius: 6px !important;
+    color: #e0e0e0 !important;
+    margin-bottom: 0.5rem !important;
+    padding: 0.5rem !important;
+}
+
+.dark-mode .table-available {
+    border-left: 4px solid #28a745 !important;
+}
+
+.dark-mode .table-occupied {
+    border-left: 4px solid #dc3545 !important;
+}
+
+.dark-mode .table-reserved {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.dark-mode .calendar-day.has-reservations::after {
+    background-color: #68d391 !important;
+    border-color: #090E18 !important;
+}
+
+.dark-mode .calendar-day.has-reservations.selected::after {
+    border-color: #68d391 !important;
+    background-color: #090E18 !important;
+}
+
+.dark-mode .calendar-day.has-reservations.today::after {
+    background-color: #68d391 !important;
+    border-color: #090E18 !important;
+}
+
+.dark-mode .reservation-count {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .calendar-day.selected .reservation-count {
+    background-color: #090E18 !important;
+    color: #68d391 !important;
+}
+
+/* Buttons */
+.dark-mode .btn {
+    border-color: #444;
+}
+
+.dark-mode .btn-default {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+.dark-mode .btn-light {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+.dark-mode .btn-outline-light {
+    color: #e0e0e0;
+    border-color: #777;
+}
+.dark-mode .btn-outline-light:hover {
+    background-color: #3d3d3d;
+}
+.dark-mode .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+/* Dropdowns */
+.dark-mode .dropdown-menu {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+.dark-mode .dropdown-item {
+    color: #e0e0e0;
+}
+.dark-mode .dropdown-item:hover {
+    background-color: #3d3d3d;
+}
+
+/* Icons */
+.dark-mode .bi,
+.dark-mode .fa,
+.dark-mode .profileColor {
+    color: #e0e0e0;
+}
+.dark-mode .bi.text-dark,
+.dark-mode .fa.text-dark,
+.dark-mode .textColor {
+    color: #ffffff !important;
+}
+.dark-mode .bi.text-muted,
+.dark-mode .fa.text-muted {
+    color: #999 !important;
+}
+
+/* Page Content Wrapper */
+.dark-mode #page-content-wrapper {
+    background-color: #090E18;
+    color: #e0e0e0;
+}
+
+/* Modals */
+.dark-mode .modal-content {
+    background-color: #090E18;
+}
+.dark-mode .modal-header,
+.dark-mode .modal-footer {
+    border-color: #444;
+}
+
+/* Borders */
+.dark-mode .border,
+.dark-mode .border-start,
+.dark-mode .border-end,
+.dark-mode .border-top,
+.dark-mode .border-bottom {
+    border-color: #444 !important;
+}
+
+/* List Groups */
+.dark-mode .list-group-item {
+    background-color: #090E18;
+    border-color: #444;
+    color: #e0e0e0;
+}
+.dark-mode .list-group-item-action:hover {
+    background-color: #2d2d2d;
+}
+.dark-mode .list-group-item.active {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.dark-mode .list-group-item.disabled {
+    color: #777;
+}
+
+.dark-mode .container-fluid, .dark-mode #content, .dark-mode .input-group, .dark-mode .input-group-text{
+	background-color: #090E18;
+    color: #e0e0e0;
+    border-color: #444;
+}

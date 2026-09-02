@@ -1,0 +1,148 @@
+/* Checkout Modal Styles - Light Mode Default */
+#myCheckout .modal-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid #dee2e6;
+  color: #212529;
+}
+
+#myCheckout .modal-header {
+  border-bottom: 1px solid #dee2e6;
+  background: rgba(248, 249, 250, 0.9);
+}
+
+#myCheckout .modal-header .modal-title {
+  color: #212529;
+  font-weight: 600;
+}
+
+#myCheckout .btn-close {
+  filter: none;
+}
+
+.checkout-modal-body {
+  padding: 2rem;
+}
+
+.payment-title {
+  color: #212529;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 1rem;
+}
+
+.payment-option {
+  flex: 1;
+  padding: 1rem;
+  background: rgba(248, 249, 250, 0.8);
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #495057;
+}
+
+.payment-option:hover {
+  background: rgba(248, 249, 250, 1);
+  border-color: #28a745;
+  transform: translateY(-2px);
+}
+
+.payment-option.active {
+  background: rgba(40, 167, 69, 0.1);
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.payment-option i {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.payment-option span {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.amount-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 1rem;
+  color: #6c757d;
+  font-size: 1.1rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.amount-input {
+  background: rgba(248, 249, 250, 0.8);
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  color: #212529;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 1rem 1rem 2.5rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.amount-input:focus {
+  background: rgba(248, 249, 250, 1);
+  border-color: #28a745;
+  color: #212529;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.amount-input::placeholder {
+  color: #6c757d;
+}
+
+.process-payment-btn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.process-payment-btn:hover {
+  background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+}
+
+.process-payment-btn:active {
+  transform: translateY(0);
+}
+
+#myCheckout .modal-footer {
+  border-top: 1px solid #dee2e6;
+  background: rgba(248, 249, 250, 0.9);
+}
+
+#myCheckout .modal-footer .btn-dark {
+  background: rgba(52, 58, 64, 0.8);
+  border-color: #dee2e6;
+  color: #ffffff;
+}
+
+#myCheckout .modal-footer .btn-dark:hover {
+  background: rgba(52, 58, 64, 1);
+  border-color: #28a745;
+}

@@ -1,0 +1,5 @@
+# Logs y archivos temporales
+php_error_log
+*.log
+/tmp/
+extensions/vendor/

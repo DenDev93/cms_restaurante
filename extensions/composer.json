@@ -1,0 +1,9 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "phpoffice/phpspreadsheet": "^2.1",
+        "cloudinary/cloudinary_php": "^3.1",
+        "stripe/stripe-php": "^17.6",
+        "dompdf/dompdf": "^3.1"
+    }
+}

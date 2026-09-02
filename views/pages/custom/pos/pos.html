@@ -1,0 +1,829 @@
+<!-- POS Styles -->
+<style>
+  /* Light Mode POS Styles (Default) */
+  .pos-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    min-height: 100vh;
+    color: #212529;
+  }
+
+  /* Dark Mode POS Styles */
+  .dark-mode .pos-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ffffff;
+  }
+
+  /* Header Styles */
+  .pos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .dark-mode .pos-header {
+    border-bottom: 2px solid #333;
+  }
+
+  .table-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #212529;
+  }
+
+  .dark-mode .table-title {
+    color: #ffffff;
+  }
+
+  .header-actions .btn {
+    border-color: #ced4da;
+    color: #212529;
+  }
+
+  .dark-mode .header-actions .btn {
+    border-color: #555;
+    color: #ffffff;
+  }
+
+  .header-actions .btn:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+  }
+
+  .dark-mode .header-actions .btn:hover {
+    background-color: #555;
+    border-color: #777;
+  }
+
+  /* Category Tabs */
+  .category-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .category-tab {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    color: #212529;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .dark-mode .category-tab {
+    background: #333;
+    border: 2px solid #444;
+    color: #ffffff;
+  }
+
+  .category-tab:hover {
+    background: #e9ecef;
+    border-color: #adb5bd;
+  }
+
+  .dark-mode .category-tab:hover {
+    background: #444;
+    border-color: #555;
+  }
+
+  .category-tab.active {
+    background: #28a745;
+    border-color: #28a745;
+    color: #ffffff;
+  }
+
+  /* Menu Categories */
+  .menu-category {
+    display: none;
+  }
+
+  .menu-category.active {
+    display: block;
+  }
+
+  /* Menu Items */
+  .menu-item {
+    background: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 100%;
+    color: #212529;
+  }
+
+  .dark-mode .menu-item {
+    background: #333;
+    border: 2px solid #444;
+    color: #ffffff;
+  }
+
+  .menu-item:hover {
+    border-color: #28a745;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+  }
+
+  .menu-item-image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .menu-item-info {
+    text-align: center;
+  }
+
+  .menu-item-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #212529;
+  }
+
+  .dark-mode .menu-item-name {
+    color: #ffffff;
+  }
+
+  .menu-item-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #28a745;
+  }
+
+  /* Order Summary */
+  .order-summary {
+    background: #ffffff;
+    border: 2px solid #dee2e6;
+    border-radius: 12px;
+    padding: 20px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    color: #212529;
+  }
+
+  .dark-mode .order-summary {
+    background: #2d2d2d;
+    border: 2px solid #444;
+    color: #ffffff;
+  }
+
+  .order-summary-header h4 {
+    color: #212529;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .dark-mode .order-summary-header h4 {
+    color: #ffffff;
+  }
+
+  .order-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+  }
+
+  .empty-order {
+    text-align: center;
+    color: #6c757d;
+    padding: 40px 20px;
+  }
+
+  .dark-mode .empty-order {
+    color: #888;
+  }
+
+  .empty-order i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .order-item {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    color: #212529;
+  }
+
+  .dark-mode .order-item {
+    background: #333;
+    border: 1px solid #444;
+    color: #ffffff;
+  }
+
+  .order-item-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .order-item-name {
+    font-weight: 600;
+    color: #212529;
+    flex: 1;
+  }
+
+  .dark-mode .order-item-name {
+    color: #ffffff;
+  }
+
+  .order-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .quantity-btn {
+    background: #e9ecef;
+    border: 1px solid #ced4da;
+    color: #212529;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .dark-mode .quantity-btn {
+    background: #444;
+    border: 1px solid #555;
+    color: #ffffff;
+  }
+
+  .quantity-btn:hover {
+    background: #dee2e6;
+  }
+
+  .dark-mode .quantity-btn:hover {
+    background: #555;
+  }
+
+  .quantity-display {
+    background: #28a745;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  .order-item-price {
+    color: #28a745;
+    font-weight: 600;
+  }
+
+  .order-item-modifications {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 4px;
+  }
+
+  .order-notes textarea {
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    color: #212529;
+    resize: none;
+  }
+
+  .dark-mode .order-notes textarea {
+    background: #333;
+    border: 1px solid #444;
+    color: #ffffff;
+  }
+
+  .order-notes textarea:focus {
+    background: #ffffff;
+    border-color: #28a745;
+    color: #212529;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+
+  .dark-mode .order-notes textarea:focus {
+    background: #333;
+    border-color: #28a745;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+  }
+
+  .order-actions {
+    margin: 20px 0;
+  }
+
+  .order-total {
+    border-top: 2px solid #dee2e6;
+    padding-top: 15px;
+  }
+
+  .dark-mode .order-total {
+    border-top: 2px solid #444;
+  }
+
+  .order-total .total-line {
+    font-size: 1.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .pos-header {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .category-tabs {
+      justify-content: center;
+    }
+
+    .menu-item-image {
+      height: 100px;
+    }
+  }
+</style>
+
+<div class="container-fluid py-3 p-lg-4 pos-container">
+        
+  <!-- POS Header -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="pos-header">
+        <h1 class="table-title">Table 7</h1>
+        <div class="header-actions">
+          <button class="btn btn-outline-light btn-sm me-2">
+            <i class="bi bi-clock-history"></i> Order History
+          </button>
+          <button class="btn btn-outline-light btn-sm">
+            <i class="bi bi-arrow-left"></i> Back to Tables
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Menu Section -->
+    <div class="col-lg-8">
+      <div class="menu-section">
+        
+        <!-- Category Tabs -->
+        <div class="category-tabs mb-4">
+          <button class="category-tab active" data-category="starters"><img src="https://placehold.co/50x50" class="rounded float-left" alt="...">Starters</button>
+          <button class="category-tab" data-category="main-dishes"><img src="https://placehold.co/50x50" class="rounded float-left" alt="...">Main Dishes</button>
+          <button class="category-tab" data-category="desserts"><img src="https://placehold.co/50x50" class="rounded float-left" alt="...">Desserts</button>
+          <button class="category-tab" data-category="drinks"><img src="https://placehold.co/50x50" class="rounded float-left" alt="...">Drinks</button>
+        </div>
+
+        <!-- Menu Items Grid -->
+        <div class="menu-items-grid">
+          
+          <!-- Starters Category -->
+          <div class="menu-category active" id="starters">
+              
+              <div class="row g-3">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="tomato-bruschetta" data-price="8.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Tomato Bruschetta" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Tomato Bruschetta</h6>
+                              <span class="menu-item-price">$8.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="caprese-salad" data-price="12.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Caprese Salad" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Caprese Salad</h6>
+                              <span class="menu-item-price">$12.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="fried-calamari" data-price="14.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Fried Calamari" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Fried Calamari</h6>
+                              <span class="menu-item-price">$14.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="mushroom-soup" data-price="9.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Mushroom Soup" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Mushroom Soup</h6>
+                              <span class="menu-item-price">$9.99</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Main Dishes Category -->
+          <div class="menu-category" id="main-dishes">
+              <div class="row g-3">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="grilled-salmon" data-price="24.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Grilled Salmon" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Grilled Salmon</h6>
+                              <span class="menu-item-price">$24.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="steak-with-fries" data-price="28.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Steak with Fries" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Steak with Fries</h6>
+                              <span class="menu-item-price">$28.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="veggie-lasagna" data-price="18.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Veggie Lasagna" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Veggie Lasagna</h6>
+                              <span class="menu-item-price">$18.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="caesar-salad" data-price="15.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Caesar Salad" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Caesar Salad</h6>
+                              <span class="menu-item-price">$15.99</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Desserts Category -->
+          <div class="menu-category" id="desserts">
+              <div class="row g-3">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="tiramisu" data-price="7.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Tiramisu" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Tiramisu</h6>
+                              <span class="menu-item-price">$7.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="chocolate-cake" data-price="6.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Chocolate Cake" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Chocolate Cake</h6>
+                              <span class="menu-item-price">$6.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="gelato" data-price="5.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Gelato" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Gelato</h6>
+                              <span class="menu-item-price">$5.99</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Drinks Category -->
+          <div class="menu-category" id="drinks">
+              <div class="row g-3">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="iced-tea" data-price="3.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Iced Tea" onerror="this.src='/views/assets/images/menu/placeholder.jpg'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Iced Tea</h6>
+                              <span class="menu-item-price">$3.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="coffee" data-price="2.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Coffee" onerror="this.src='/views/assets/images/menu/placeholder.jpg'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Coffee</h6>
+                              <span class="menu-item-price">$2.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="wine" data-price="8.99">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="House Wine" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">House Wine</h6>
+                              <span class="menu-item-price">$8.99</span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                      <div class="menu-item" data-item="soda" data-price="2.49">
+                          <div class="menu-item-image">
+                              <img src="https://placehold.co/100x100" alt="Soda" onerror="this.src='https://placehold.co/100x100'">
+                          </div>
+                          <div class="menu-item-info">
+                              <h6 class="menu-item-name">Soda</h6>
+                              <span class="menu-item-price">$2.49</span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary Sidebar -->
+    <div class="col-lg-4">
+      <div class="order-summary">
+        <div class="order-summary-header">
+          <h4>Order Summary</h4>
+        </div>
+        
+        <div class="order-items" id="order-items">
+          <!-- Order items will be dynamically added here -->
+          <div class="empty-order">
+            <i class="bi bi-cart3"></i>
+            <p>No items added yet</p>
+          </div>
+        </div>
+
+        <div class="order-notes">
+          <textarea class="form-control" placeholder="Add notes for the entire order..." rows="3"></textarea>
+        </div>
+
+        <div class="order-actions">
+          <button class="btn btn-success btn-lg w-100 mb-2" id="submit-order">
+            <i class="bi bi-check-circle"></i> Submit Order
+          </button>
+          <button class="btn btn-outline-light w-100" id="clear-order">
+            <i class="bi bi-trash"></i> Clear Order
+          </button>
+        </div>
+
+        <div class="order-total">
+          <div class="d-flex justify-content-between">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0.00</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span>Tax (8.5%):</span>
+            <span id="tax">$0.00</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between total-line">
+            <strong>Total:</strong>
+            <strong id="total">$0.00</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- POS JavaScript -->
+<script>
+  $(function() {
+    let orderItems = {};
+    let orderTotal = 0;
+
+    // -------- Tabs de categorías --------
+    $(document).on('click', '.category-tab', function() {
+      $('.category-tab').removeClass('active');
+      $('.menu-category').removeClass('active');
+
+      $(this).addClass('active');
+      const category = $(this).data('category');
+      $('#' + category).addClass('active');
+    });
+
+    // -------- Click en ítem del menú --------
+    $(document).on('click', '.menu-item', function() {
+      const itemId = $(this).data('item');
+      const itemName = $(this).find('.menu-item-name').text();
+      const itemPrice = parseFloat($(this).data('price'));
+      addToOrder(itemId, itemName, itemPrice);
+    });
+
+    // -------- Agregar al pedido --------
+    function addToOrder(itemId, itemName, itemPrice) {
+      if (orderItems[itemId]) {
+        orderItems[itemId].quantity += 1;
+      } else {
+        orderItems[itemId] = {
+          name: itemName,
+          price: itemPrice,
+          quantity: 1,
+          modifications: []
+        };
+      }
+      updateOrderDisplay();
+      showNotification(`${itemName} added to order`, 'success');
+    }
+
+    // -------- Render del pedido --------
+    function updateOrderDisplay() {
+      const $container = $('#order-items');
+
+      if (Object.keys(orderItems).length === 0) {
+        $container.html(`
+        <div class="empty-order">
+        <i class="bi bi-cart3"></i>
+        <p>No items added yet</p>
+        </div>
+        `);
+        updateTotals();
+        return;
+      }
+
+      let html = '';
+      $.each(orderItems, function(itemId, item) {
+        html += `
+        <div class="order-item" data-id="${itemId}">
+        <div class="order-item-header">
+        <span class="order-item-name">${item.name}</span>
+        <div class="order-item-controls">
+        <button class="quantity-btn decrease-qty">
+        <i class="bi bi-dash"></i>
+        </button>
+        <span class="quantity-display">x${item.quantity}</span>
+        <button class="quantity-btn increase-qty">
+        <i class="bi bi-plus"></i>
+        </button>
+        <button class="quantity-btn ms-2 remove-item" style="background:#dc3545; border-color:#dc3545;">
+        <i class="bi bi-trash"></i>
+        </button>
+        </div>
+        </div>
+        <div class="d-flex justify-content-between">
+        <span class="order-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>
+        ${item.modifications.length ? `<div class="order-item-modifications">${item.modifications.join(', ')}</div>` : ''}
+        </div>
+        `;
+      });
+
+      $container.html(html);
+      updateTotals();
+    }
+
+    // -------- Cantidades (delegación) --------
+    $(document).on('click', '.increase-qty', function(e) {
+      e.preventDefault();
+      const itemId = $(this).closest('.order-item').data('id');
+      if (orderItems[itemId]) {
+        orderItems[itemId].quantity += 1;
+        updateOrderDisplay();
+      }
+    });
+
+    $(document).on('click', '.decrease-qty', function(e) {
+      e.preventDefault();
+      const itemId = $(this).closest('.order-item').data('id');
+      if (!orderItems[itemId]) return;
+
+      if (orderItems[itemId].quantity > 1) {
+        orderItems[itemId].quantity -= 1;
+      } else {
+        delete orderItems[itemId];
+      }
+      updateOrderDisplay();
+    });
+
+    $(document).on('click', '.remove-item', function(e) {
+      e.preventDefault();
+      const itemId = $(this).closest('.order-item').data('id');
+      if (orderItems[itemId]) {
+        delete orderItems[itemId];
+        updateOrderDisplay();
+        showNotification('Item removed from order', 'info');
+      }
+    });
+
+    // -------- Totales --------
+    function updateTotals() {
+      let subtotal = 0;
+      $.each(orderItems, function(_id, item) {
+        subtotal += item.price * item.quantity;
+      });
+      const tax = subtotal * 0.085; // 8.5% IVA
+      const total = subtotal + tax;
+
+      $('#subtotal').text(`$${subtotal.toFixed(2)}`);
+      $('#tax').text(`$${tax.toFixed(2)}`);
+      $('#total').text(`$${total.toFixed(2)}`);
+
+      orderTotal = total;
+    }
+
+    // -------- Enviar pedido --------
+    $('#submit-order').on('click', function() {
+      if (Object.keys(orderItems).length === 0) {
+        showNotification('Please add items to your order', 'warning');
+        return;
+      }
+      if (confirm('Submit this order to the kitchen?')) {
+        console.log('Order submitted:', orderItems);
+        showNotification('Order submitted successfully!', 'success');
+        setTimeout(() => clearOrder(), 1500);
+      }
+    });
+
+    // -------- Limpiar pedido --------
+    $('#clear-order').on('click', function() {
+      if (Object.keys(orderItems).length === 0) return;
+      if (confirm('Clear all items from this order?')) clearOrder();
+    });
+
+    function clearOrder() {
+      orderItems = {};
+      updateOrderDisplay();
+      $('.order-notes textarea').val('');
+      showNotification('Order cleared', 'info');
+    }
+
+    // -------- Notificaciones --------
+    function showNotification(message, type = 'info') {
+      const cls = (type === 'success') ? 'success' : (type === 'warning') ? 'warning' : 'info';
+      const $n = $(`
+      <div class="alert alert-${cls} alert-dismissible fade show position-fixed"
+      style="top:20px; right:20px; z-index:9999; min-width:300px;">
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+      `);
+      $('body').append($n);
+      setTimeout(() => $n.remove(), 3000);
+    }
+  });
+</script>

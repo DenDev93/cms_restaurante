@@ -1,0 +1,115 @@
+.legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .bg-purple {
+    background-color: #6f42c1 !important;
+  }
+
+  .table-card {
+    border-radius: 12px;
+    padding: 16px;
+    min-height: 170px;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .table-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .table-free {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: 5px solid #28a745;
+  }
+
+  .table-occupied {
+    background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+    color: #212529;
+    border: 5px solid #ffc107;
+  }
+
+  .table-waiting {
+    background: linear-gradient(135deg, #17a2b8 0%, #007bff 100%);
+    color: white;
+    border: 5px solid #17a2b8;
+  }
+
+  .table-reserved {
+    background: linear-gradient(135deg, #6f42c1 0%, #e83e8c 100%);
+    color: white;
+    border: 5px solid #6f42c1;
+  }
+
+  .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .table-number {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .table-status {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .table-info {
+    margin-bottom: 12px;
+  }
+
+  .seats-info {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+
+  .party-info,
+  .time-info {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .table-actions {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+  }
+
+  .seat-guests-btn,
+  .process-payment-btn {
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .seat-guests-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    transform: scale(1.02);
+  }
+
+  .process-payment-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .table-card {
+      min-height: 120px;
+    }
+  }

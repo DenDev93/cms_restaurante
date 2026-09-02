@@ -1,0 +1,206 @@
+/* User Profile Widget for Sidebar - Light Mode Default */
+.user-profile-widget {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 248px;
+    color: #1a202c;
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.user-profile-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.credits-display {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #1a202c !important;
+    justify-content: center;
+    margin-right: 0.75rem;
+    border: 2px solid #10b981;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.credits-number {
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1px;
+}
+
+.credits-label {
+    font-size: 0.5rem;
+    font-weight: 500;
+    line-height: 1;
+    opacity: 0.9;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.user-email {
+    font-size: 0.8rem;
+    color: #4a5568;
+    margin: 0.2rem 0;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-plan {
+    display: inline-flex;
+    align-items: center;
+    background: #10b981;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    margin-top: 0.3rem;
+}
+
+.upgrade-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.75rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.upgrade-btn:hover {
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.upgrade-btn i {
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .user-profile-widget {
+        width: 100%;
+        left: 0;
+        right: 0;
+        padding: 0.75rem;
+    }
+    
+    .user-profile-card {
+        padding: 0.75rem;
+    }
+    
+    .credits-display {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .user-name {
+        font-size: 0.9rem;
+    }
+    
+    .user-email {
+        font-size: 0.75rem;
+    }
+}
+
+/* Sidebar width adjustments */
+@media (min-width: 769px) {
+    .user-profile-widget {
+        width: 248px;
+    }
+}
+
+/* When sidebar is expanded */
+.sidebar-expanded .user-profile-widget {
+    width: 248px;
+}
+
+/* When sidebar is collapsed */
+.sidebar-collapsed .user-profile-widget {
+    width: 60px;
+    padding: 0.5rem;
+}
+
+.sidebar-collapsed .user-profile-widget .user-info,
+.sidebar-collapsed .user-profile-widget .upgrade-btn {
+    display: none;
+}
+
+.sidebar-collapsed .user-profile-widget .credits-display {
+    margin: 0 auto;
+}
+
+/* Dark Mode Overrides */
+.dark-mode .user-profile-widget {
+    color: #ffffff;
+    border-top-color: #475569;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .user-profile-card {
+    background: #121530;
+    border-color: #475569;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .user-name {
+    color: #ffffff;
+}
+
+.dark-mode .user-email {
+    color: #94a3b8;
+}
+
+/* Animation */
+.user-profile-widget {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
