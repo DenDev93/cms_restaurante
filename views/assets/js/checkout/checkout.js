@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	var TASA_USD = Number($("#tasaUsd").val());
+	var TASA_USD = Number($("#tasaUsd").val()) || 36.75;
 
     /*=============================================
 	Elegir el método de pago
@@ -167,21 +167,21 @@ $(document).ready(function () {
 
     	calcularVuelto();
 
-    },1000)
+    },500)
 
     /*=============================================
 	Click a procesar el pago
 	=============================================*/
 
-	$(document).on("click", "#processPaymentBtn", function(){
+    $(document).on("click", "#processPaymentBtn", function(){
 
-		const currency = $("#selectedCurrency").val();
-		const totalPagar = Number($("#totalCordobas").val());
-		const totalMoneda = currency == "US$" ? totalPagar/TASA_USD : totalPagar;
-		const recibido = Number($("#paymentAmount").val());
-		const vuelto = Number($("#changeAmount").val());
+    	const currency = $("#selectedCurrency").val();
+    	const totalPagar = Number($("#totalCordobas").val());
+    	const totalMoneda = currency == "US$" ? totalPagar/TASA_USD : totalPagar;
+    	const recibido = Number($("#paymentAmount").val());
+    	const vuelto = Number($("#changeAmount").val());
 
-		if (recibido <= 0 || isNaN(recibido)) {
+    	if (recibido <= 0 || isNaN(recibido)) {
             fncToastr("error", "Valida el monto recibido");
             return;
         }  
@@ -233,7 +233,6 @@ $(document).ready(function () {
                         modal.hide();
                     }
 
-// Show success message and open the boucher
                     boucherWin.location.href = "/boucher?idOrder="+idOrder;
 
                     fncSweetAlert("success",
@@ -250,10 +249,15 @@ $(document).ready(function () {
             		fncToastr("error","Error al procesar el pago");  
             	}
 
+            },
+            error: function() {
+            	$btn.html("Procesar el Pago");
+            	$btn.prop("disabled", false);
+            	fncToastr("error","Error de conexión con el servidor");
             }
 
         })
 
-	})
+    })
 
 });

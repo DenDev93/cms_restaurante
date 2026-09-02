@@ -1,6 +1,5 @@
 <?php
 
-
 if(isset($_GET["office"])){
 
 	$officeParts = explode("_",$_GET["office"]);
@@ -31,16 +30,11 @@ if(isset($_GET["office"])){
 
 	<div class="d-flex">
 
-		<!--===============================
-		Elegimos la sucursal
-		=================================-->
-
 		<div class="py-2 px-1">
 
-			<?php //if ($_SESSION["admin"]->id_office_admin > 0): ?>
 			<?php if (isset($_SESSION["admin"]->id_office_admin) && $_SESSION["admin"]->id_office_admin > 0): ?>
 			
-<a href="#myOffices" data-bs-toggle="modal" class="badge badge-default backColor small rounded px-3 py-2">
+			<a href="#myOffices" data-bs-toggle="modal" class="badge badge-default backColor small rounded px-3 py-2">
 				<?php echo urldecode(isset($_SESSION["admin"]->title_office) ? $_SESSION["admin"]->title_office : "Sucursal ".$_SESSION["admin"]->id_office_admin) ?>
 			</a>
 
@@ -49,7 +43,6 @@ if(isset($_GET["office"])){
 				<a href="#myOffices" data-bs-toggle="modal" class="badge badge-default backColor small rounded px-3 py-2">
 					Multi-Sucursal
 				</a>
-
 
 			<?php endif ?>
 

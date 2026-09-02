@@ -10,20 +10,12 @@ if($pages->status == 200){
 
 	$pages = $pages->results;
 
-	/*=============================================
-	Filtrar páginas hijas
-	=============================================*/
-	
 	$childPages = array_filter($pages, function($page){
-		
 		return $page->parent_id_page > 0;
-	
 	});
 
 }else{
-
 	$pages = array();
-	
 }
 
 ?>
@@ -65,9 +57,9 @@ if($pages->status == 200){
 
 								 		<span class="position-absolute rounded bg-transparent" style="right:5px; top:15px">
 							 			
-											<span class="text-muted rounded m-0 p-0 border-0">
-											<i class="bi bi-chevron-down"></i>	
-											</span>
+									 			<span class="text-muted rounded m-0 p-0 border-0">
+									 			<i class="bi bi-chevron-down"></i>	
+									 			</span>
 
 							 			</span>
 
@@ -101,7 +93,6 @@ if($pages->status == 200){
 
 														 	</a>
 
-															
 														<?php endif ?>
 
 														<?php if ($_SESSION["admin"]->rol_admin == "superadmin"): ?>
@@ -120,9 +111,7 @@ if($pages->status == 200){
 													 				<i class="bi bi-trash m-1"></i>
 													 			</button>
 
-
 													 		</span>
-
 
 													 	<?php endif ?>
 
@@ -171,9 +160,7 @@ if($pages->status == 200){
 							 				<i class="bi bi-trash m-1"></i>
 							 			</button>
 
-
 							 		</span>
-
 
 							 	<?php endif ?>
 
@@ -182,7 +169,6 @@ if($pages->status == 200){
 						<?php endif ?>
 
 					<?php endif ?>
-
 				
 				<?php else: ?>
 
