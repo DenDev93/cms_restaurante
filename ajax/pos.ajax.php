@@ -456,8 +456,6 @@ if($purchase->stock_purchase > 0){
 
 			$sales = $getSales->results;
 
-			$countSales = 0;
-
 			foreach ($sales as $key => $value) {
 				
 				/*=============================================
@@ -469,51 +467,47 @@ if($purchase->stock_purchase > 0){
 				$fields = array();
 
 				$deleteSales = CurlController::request($url,$method,$fields);	
-
-				if($deleteSales->status == 200){
-
-					$countSales++;
-
-					if($countSales == count($sales)){
-
-						/*=============================================
-						Eliminar la orden
-						=============================================*/
-
-						$url = "orders?id=".$this->id_order_delete."&nameId=id_order&token=".$this->token."&table=admins&suffix=admin";
-						$method = "DELETE";
-						$fields = array();
-
-						$deleteOrder = CurlController::request($url,$method,$fields);	
-
-						if($deleteOrder->status == 200){
-
-							/*=============================================
-							liberar la mesa
-							=============================================*/
-
-							$url = "tables?id=".$this->id_table_delete."&nameId=id_table&token=".$this->token."&table=admins&suffix=admin";
-							$method = "PUT";
-							$fields = array(
-								"status_table" => "libre"
-							);
-
-							$fields = http_build_query($fields);
-
-							$updateTable = CurlController::request($url,$method,$fields);
-
-							if($updateTable->status == 200){
-
-								echo 200;
-							}
-						}
-					
-					}
-				
-				}
 			
 			}
 
+		}
+
+		/*=============================================
+		Eliminar la orden
+		=============================================*/
+
+		$url = "orders?id=".$this->id_order_delete."&nameId=id_order&token=".$this->token."&table=admins&suffix=admin";
+		$method = "DELETE";
+		$fields = array();
+
+		$deleteOrder = CurlController::request($url,$method,$fields);	
+
+		if($deleteOrder->status == 200){
+
+			/*=============================================
+			liberar la mesa
+			=============================================*/
+
+			$url = "tables?id=".$this->id_table_delete."&nameId=id_table&token=".$this->token."&table=admins&suffix=admin";
+			$method = "PUT";
+			$fields = array(
+				"status_table" => "libre"
+			);
+
+			$fields = http_build_query($fields);
+
+			$updateTable = CurlController::request($url,$method,$fields);
+
+			if($updateTable->status == 200){
+
+				echo 200;
+			}else{
+
+				echo "Error al liberar la mesa: ".$updateTable->status;
+			}
+		}else{
+
+			echo "Error al eliminar la orden: ".$deleteOrder->status;
 		}
 	
 	}

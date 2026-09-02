@@ -193,14 +193,18 @@ if($_SESSION["admin"]->id_office_admin > 0){
 
                   				$getOrder = CurlController::request($url,$method,$fields);
 
-                  				$orderState = "Pendiente";
+                  				$orderState = "";
                   				$countLista = 0;
                   				$countEntregada = 0;
                   				$totalItems = 0;
+                  				$orderTxn = "";
+                  				$orderDate = "";
 
                   				if($getOrder->status == 200 && !empty($getOrder->results)){
 
                   					$orderState = $getOrder->results[0]->process_order;
+                  					$orderTxn = $getOrder->results[0]->transaction_order;
+                  					$orderDate = $getOrder->results[0]->date_order;
 
                   					$url = "relations?rel=sales,foods&type=sale,food&linkTo=id_order_sale&equalTo=".$getOrder->results[0]->id_order;
                   					$method = "GET";
@@ -229,13 +233,15 @@ if($_SESSION["admin"]->id_office_admin > 0){
 
 			              	?>
 
+<?php if ($orderTxn !== ""): ?>
+
 			              	<div class="d-flex justify-content-between align-items-center mb-2">
 			              		
-			              		<span class="party-info">Orden # <?php echo $getOrder->results[0]->transaction_order ?></span>
+			              		<span class="party-info">Orden # <?php echo $orderTxn ?></span>
 			              		<span
 			              		class="time-info" 
 			              		index="<?php echo $key ?>"
-			              		startTime="<?php echo $getOrder->results[0]->date_order ?>"
+			              		startTime="<?php echo $orderDate ?>"
 			              		endTime="<?php echo date("Y-m-d H:i:s") ?>"></span>  
 
 			              	</div>
@@ -256,9 +262,11 @@ if($_SESSION["admin"]->id_office_admin > 0){
 	              		<span class="badge bg-info w-100 mb-2">Listo para servir</span>
 	              	<?php endif ?>
 
-			              	<?php if ($countEntregada > 0 && $totalItems > 0 && $countEntregada == $totalItems): ?>
-			              		<span class="badge bg-success w-100 mb-2">Servida a la mesa</span>
-			              	<?php endif ?>
+<?php if ($countEntregada > 0 && $totalItems > 0 && $countEntregada == $totalItems): ?>
+	              		<span class="badge bg-success w-100 mb-2">Servida a la mesa</span>
+	              	<?php endif ?>
+
+			              <?php endif ?>
 
 			              <?php endif ?>
 

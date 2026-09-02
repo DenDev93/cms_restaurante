@@ -20,6 +20,29 @@ class DynamicTablesController{
     	$idItems = explode(",",$this->idItemDelete);
     	$countDelete = 0;
 
+    	/*=============================================
+    	Si se borran órdenes, obtener sus mesas para liberarlas
+    	=============================================*/
+
+    	$freeTables = array();
+
+    	if($this->tableDelete == "orders"){
+
+    		foreach ($idItems as $key => $value) {
+
+    			$url = "orders?linkTo=id_order&select=id_table_order&equalTo=".base64_decode($value);
+    			$method = "GET";
+    			$fields = array();
+
+    			$getOrder = CurlController::request($url,$method,$fields);
+
+    			if($getOrder->status == 200 && !empty($getOrder->results)){
+
+    				$freeTables[] = $getOrder->results[0]->id_table_order;
+    			}
+    		}
+    	}
+
     	foreach ($idItems as $key => $value) {
     		
     		$url = $this->tableDelete."?id=".base64_decode($value)."&nameId=id_".$this->suffixDelete."&token=".$this->token."&table=admins&suffix=admin";
@@ -33,6 +56,19 @@ class DynamicTablesController{
 				$countDelete++;
 
 				if($countDelete == count($idItems)){
+
+					foreach ($freeTables as $idTable) {
+
+						$url = "tables?id=".$idTable."&nameId=id_table&token=".$this->token."&table=admins&suffix=admin";
+						$method = "PUT";
+						$fields = array(
+							"status_table" => "libre"
+						);
+
+						$fields = http_build_query($fields);
+
+						CurlController::request($url,$method,$fields);
+					}
 
 					echo 200;
 
